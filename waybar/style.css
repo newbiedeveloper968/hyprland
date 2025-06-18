@@ -1,0 +1,46 @@
+/* window#waybar {
+    background: #1d2021;
+    color: white;
+    font-family: "awesome";
+    font-weight: bolder;
+    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+}
+
+.modules-center {
+    font-size: 16px;
+}
+
+#workspaces button {
+    background: transparent;
+    margin-right: 10px;
+}
+
+#workspaces button.active {
+    background: #504945;
+    color: white;
+}
+
+#network {
+    margin-right: 15px;
+}
+
+#clock {
+    font-family: "Calibri";
+    font-size: 17px;
+    margin-right: 10px;
+    padding: 5px;
+}
+
+#pulseaudio, #battery {
+    font-size: 16px;
+    padding: 5px;
+    margin-right: 10px;
+} */
+
+* {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 13px;
+  color: #cdd6f4;
+  background-color: #1e1e2e;
+  border: none;
+}

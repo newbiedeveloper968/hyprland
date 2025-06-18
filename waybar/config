@@ -1,0 +1,97 @@
+// {
+//     "layer": "top",
+//     "position" : "bottom",
+//     "modules-left" : ["hyprland/window"],
+//     "modules-center": ["hyprland/workspaces", "network" , "clock" , "pulseaudio" , "battery"],
+//     "modules-right":["custom/myscript"],
+
+
+// // BATTERY
+//     "battery": {
+//         "format": "{icon} {capacity}%",
+//         "format-icons": ["", "", "", "", ""]
+//     },
+
+// // NETWORK
+//     "network" : {
+//         "format-wifi": "",
+//         "format-disconnected" : "⛔",
+//         "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+//     },
+
+// // CLOCK
+//     "clock": {
+//         "interval": 1,
+//         "format": "{:%I:%M}",
+//         "tooltip" : true,
+//         "tooltip-format": "{:%A | %d %h %Y}",
+
+//     },
+
+// // PULSEAUDIO
+//     "pulseaudio" : {
+//         "format" : "{icon} {volume}",
+//         "format-bluetooth" : " {volume}",
+//         "format-muted": "",
+//         "format-icons" : {
+//             "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
+//             "headphone": "",
+//             "hands-free": "",
+//         },
+//         "on-click": "pavucontrol",
+//     },
+
+// // Windows
+//     "hyprland/window" : {
+//         "format" : ">> {}",
+//     },
+
+// // CAVA
+// //    "cava": {
+// //        "framerate": 120,
+// //        "autosens": 1,
+// //        "bars": 12,
+// //        "method": "pulse",
+// //        "source": "auto",
+// //        "bar_delimiter": 0,
+// //        "input_delay": 2,
+// //        "sleep_timer": 2,
+// //        "hide_on_silence": true,
+// //        "format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+// //        "waves" : true
+// //    },
+
+// }
+
+{
+  "layer": "top",
+  "modules-left": ["clock"],
+  "modules-center": [],
+  "modules-right": ["bluetooth", "pulseaudio", "network", "battery", "tray"],
+
+  "clock": {
+    "format": " {:%H:%M}"
+  },
+
+  "battery": {
+    "format": " {capacity}%"
+  },
+
+  "bluetooth": {
+    "format": " {status}   ",
+    "format-disabled": " off",
+    "on-click": "blueman-manager"
+  },
+
+  "pulseaudio" : {
+     "format" : "{icon} {volume}    ",
+     "format-bluetooth" : " {volume}    ",
+     "format-muted": "        ",
+       "format-icons" : {
+           "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
+           "headphone": "",
+           "hands-free": "",
+       },
+       "on-click": "pavucontrol",
+   },
+}

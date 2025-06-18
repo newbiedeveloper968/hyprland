@@ -12,11 +12,15 @@ yay -S hyprland hyprsunset hyprpaper hyprlock hypridle hyprshot waybar rofi brig
 # Post installation
 ### Removing existing directories
 ```
-sudo rm -r .config/hypr ; rm -r .config/waybar ; rm -r .config/rofi ; rm -r .config/alacritty ; rm -r .config/fish ; rm -r .config/mako ; rm -r .config/fastfetch ; rm -r .config/neovim
+rm -r .config/hypr ; rm -r .config/waybar ; rm -r .config/rofi ; rm -r .config/alacritty ; rm -r .config/fish ; rm -r .config/mako ; rm -r .config/fastfetch ; rm -r .config/neovim
 ```
 ### Copying to destined dirs
 ```
-sudo cp -r pyc/hyprland/hypr .config/ ; cp -r pyc/hyprland/waybar .config/ ; cp -r pyc/hyprland/rofi .config/ ; cp -r pyc/hyprland/alacritty .config/ ; cp -r pyc/hyprland/fish .config/ ; cp -r pyc/hyprland/mako .config/ ; cp -r pyc/hyprland/fastfetch .config/ ; cp -r pyc/hyprland/neovim
+cp -r pyc/hyprland/hypr .config/ ; cp -r pyc/hyprland/waybar .config/ ; cp -r pyc/hyprland/rofi .config/ ; cp -r pyc/hyprland/alacritty .config/ ; cp -r pyc/hyprland/fish .config/ ; cp -r pyc/hyprland/mako .config/ ; cp -r pyc/hyprland/fastfetch .config/ ; cp -r pyc/hyprland/nvim ; cp -r pyc/hyprland/wallpapers ~/Pictures
+```
+### Change Shell
+```
+chsh -s /bin/fish
 ```
 # Neovim
 ```
