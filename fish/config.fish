@@ -4,7 +4,7 @@ if status is-interactive
     end
 
     # Custom greeting
-    echo "🌱 Don't forget to use the Timer!"
+    echo "🌱 Gambare Gambare!"
 
     # Customize syntax highlighting colors
     set -g fish_color_command brcyan       # Commands
