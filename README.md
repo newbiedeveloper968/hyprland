@@ -42,3 +42,7 @@ systemctl --user restart pipewire pipewire-pulse && sudo systemctl restart bluet
 ```
 sudo systemctl enable NetworkManager.service && sudo systemctl start NetworkManager.service
 ```
+# GRUB
+```
+yay -S grub-customizer xorg-xhost && xhost +SI:localuser:root && pkexec grub-customizer
+```
