@@ -26,6 +26,7 @@ if status is-interactive
     alias vim='nvim'
     alias bl='bluetui'
     alias p='python3'
+    alias yt='ytfzf -t'
 
     # Environment variables
     set -x HYPRSHOT_DIR "$HOME/Pictures/Screenshots"
@@ -46,3 +47,7 @@ function pom
     timer $argv
     notify-send "Timer Done"
 end
+
+set -Ux EDITOR nvim
+set -Ux VISUAL nvim
+export MOZ_ENABLE_WAYLAND=1
