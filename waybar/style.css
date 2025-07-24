@@ -1,3 +1,8 @@
+* {
+    font-family: "DepartureMono Nerd Font Mono";
+    font-size: 12px;
+}
+
 window#waybar {
     background: #1F2232;
     color: white;

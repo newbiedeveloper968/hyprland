@@ -26,8 +26,8 @@ if status is-interactive
     alias vim='nvim'
     alias bl='bluetui'
     alias p='python3'
-    alias yt='ytfzf -t'
-
+    alias cs50 'gcc -lcs50'
+   
     # Environment variables
     set -x HYPRSHOT_DIR "$HOME/Pictures/Screenshots"
 
@@ -47,6 +47,11 @@ function pom
     timer $argv
     notify-send "Timer Done"
 end
+
+function cs50
+    gcc $argv -lcs50
+end
+
 
 set -Ux EDITOR nvim
 set -Ux VISUAL nvim
