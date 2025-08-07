@@ -1,19 +1,28 @@
--- Basic settings
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
-vim.opt.smartindent = true
-vim.opt.termguicolors = true
-vim.opt.cursorline = true
-vim.opt.clipboard = "unnamedplus"
-vim.opt.mouse = "a"
-vim.opt.wrap = false
+-- ========================
+--      BASIC SETTINGS
+-- ========================
 
-vim.g.mapleader = " "
+vim.opt.number = true                  -- Show absolute line numbers
+vim.opt.relativenumber = true         -- Show relative line numbers
+vim.opt.expandtab = true              -- Use spaces instead of tabs
+vim.opt.shiftwidth = 4                -- Indent width
+vim.opt.tabstop = 4                   -- Tab character width
+vim.opt.smartindent = true            -- Smarter autoindenting
+vim.opt.termguicolors = true          -- Enable 24-bit RGB colors
+vim.opt.cursorline = true             -- Highlight the line under cursor
+vim.opt.clipboard = "unnamedplus"     -- Sync with system clipboard
+vim.opt.mouse = "a"                   -- Enable mouse support
+vim.opt.wrap = true                   -- Enable line wrapping
+vim.opt.swapfile = false              -- Disable swapfile
 
--- Plugins with vim-plug
+vim.opt.timeoutlen = 300              -- Timeout for key sequences
+
+vim.g.mapleader = " "                 -- Leader key set to space
+
+-- ========================
+--       PLUGINS
+-- ========================
+
 vim.cmd [[
 call plug#begin('~/.local/share/nvim/plugged')
 
@@ -22,21 +31,38 @@ Plug 'ellisonleao/gruvbox.nvim'
 Plug 'preservim/nerdtree'              " File explorer
 Plug 'nvim-telescope/telescope.nvim', {'do': ':UpdateRemotePlugins'} " Fuzzy finder
 Plug 'nvim-lua/plenary.nvim'           " Required by telescope
-
 Plug 'neovim/nvim-lspconfig'           " LSP configurations
 Plug 'hrsh7th/nvim-cmp'                " Autocomplete plugin
 Plug 'hrsh7th/cmp-nvim-lsp'            " LSP source for autocomplete
 Plug 'L3MON4D3/LuaSnip'                " Snippet engine
 Plug 'saadparwaiz1/cmp_luasnip'        " Snippet completions
-
 Plug 'windwp/nvim-autopairs'
-Plug 'kevinhwang91/rnvimr'
 
 call plug#end()
 ]]
 
--- nvim-autopairs
+-- ========================
+--     TELESCOPE SETUP
+-- ========================
+
+local actions = require('telescope.actions')
+local telescope = require('telescope')
+
+telescope.setup{
+  defaults = {
+    mappings = {
+      i = { ["<CR>"] = actions.select_vertical },  -- Insert mode: open in vsplit
+      n = { ["<CR>"] = actions.select_vertical },  -- Normal mode: open in vsplit
+    },
+  },
+}
+
+-- ========================
+--   AUTOPAIRS + CMP
+-- ========================
+
 require('nvim-autopairs').setup{}
+
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local cmp = require('cmp')
 
@@ -45,85 +71,72 @@ cmp.event:on(
   cmp_autopairs.on_confirm_done()
 )
 
--- rnvimr
-vim.g.rnvimr_enable_ex = 1             -- enable :Rnvimr command
-vim.g.rnvimr_enable_picker = 1         -- replace netrw with rnvimr
-vim.g.rnvimr_draw_border = 1           -- add border around floating ranger
-vim.g.rnvimr_hide_gitignore = 1        -- hide gitignored files
-vim.g.rnvimr_ranger_cmd = { 'ranger' }
-vim.g.rnvimr_edit_cmd = 'drop'
-vim.keymap.set("n", "<leader>r", ":RnvimrToggle<CR>", { noremap = true, silent = true })
+-- ========================
+--      KEYBINDINGS
+-- ========================
 
--- copy path
+-- Copy path to clipboard
 vim.keymap.set("n", "<leader>cp", [[:let @+ = expand('%:p:h')<CR>]], { noremap = true, silent = true })
 
--- Colorscheme
--- vim.cmd("colorscheme vscode")
-vim.cmd("colorscheme gruvbox")
+-- Theme
+vim.cmd("colorscheme vscode")
+-- vim.cmd("colorscheme gruvbox")
 
--- Set timeoutlen to 300 milliseconds
-vim.opt.timeoutlen = 300
-
--- Map 'kj' in insert mode to Escape (exit insert mode)
+-- Exit insert mode with 'kj'
 vim.keymap.set("i", "kj", "<ESC>", { noremap = true, silent = true })
 
--- Map 'y' in visual mode to yank to system clipboard
+-- Yank to system clipboard
 vim.keymap.set("v", "y", '"+y', { noremap = true, silent = true })
-
--- Map 'yy' in normal mode to yank the whole line to system clipboard
 vim.keymap.set("n", "yy", '"+yy', { noremap = true, silent = true })
 
-
--- NERDTree toggle
+-- NERDTree toggle and settings
 vim.keymap.set("n", "<leader>e", ":NERDTreeFind<CR>", { noremap = true, silent = true })
 vim.g.NERDTreeChDirMode = 2
-vim.g.NERDTreeWinSize = 20  -- or whatever width you prefer
+vim.g.NERDTreeWinSize = 20
 
--- Telescope keymaps
+-- Telescope bindings
 vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>", { silent = true })
 vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>", { silent = true })
 
--- Setup LSP
+-- ========================
+--     LSP CONFIGURATION
+-- ========================
+
 local lspconfig = require("lspconfig")
 local servers = { "pyright", "clangd" }
 
--- Setup completion
-local cmp = require("cmp")
-local luasnip = require("luasnip")
-
-cmp.setup {
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
-  },
-  mapping = {
-    ["<Tab>"] = cmp.mapping.select_next_item(),
-    ["<S-Tab>"] = cmp.mapping.select_prev_item(),
-    ["<CR>"] = cmp.mapping.confirm({ select = true }),
-  },
-  sources = {
-    { name = "nvim_lsp" },
-    { name = "luasnip" },
-  },
-}
-
-local on_attach = function(client, bufnr)
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
-  local keymap = vim.keymap.set
-  keymap("n", "gd", vim.lsp.buf.definition, bufopts)
-  keymap("n", "K", vim.lsp.buf.hover, bufopts)
-  keymap("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
-  keymap("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
-  keymap("n", "gr", vim.lsp.buf.references, bufopts)
-  keymap("n", "[d", vim.diagnostic.goto_prev, bufopts)
-  keymap("n", "]d", vim.diagnostic.goto_next, bufopts)
-  keymap("n", "<leader>f", vim.lsp.buf.format, bufopts)
+-- Setup LSP keybinds when attached to buffer
+local on_attach = function(_, bufnr)
+  local opts = { noremap=true, silent=true, buffer=bufnr }
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+  vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+  vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+  vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+  vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+  vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+  vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, opts)
 end
 
+-- Setup each LSP server
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
     capabilities = require("cmp_nvim_lsp").default_capabilities(),
   }
 end
+
+-- ========================
+--    OPTIONAL: Autoformat
+-- ========================
+--[[
+if vim.fn.executable("clang-format") == 1 then
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = { "*.c", "*.h", "*.cpp", "*.hpp" },
+    callback = function()
+      vim.cmd("%!clang-format")
+    end,
+    desc = "Auto format C/C++ with clang-format on save",
+  })
+end
+]]
