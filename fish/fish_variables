@@ -3,6 +3,8 @@
 SETUVAR --export EDITOR:nvim
 SETUVAR --export GTK_THEME:Adwaita\x3adark
 SETUVAR --export VISUAL:nvim
+SETUVAR --export XCURSOR_SIZE:35
+SETUVAR --export XCURSOR_THEME:macOS
 SETUVAR __fish_initialized:3800
 SETUVAR fish_color_autosuggestion:brblack
 SETUVAR fish_color_cancel:\x2dr

@@ -17,7 +17,7 @@ if status is-interactive
     set -g fish_color_cwd yellow           # Current directory in prompt
     set -g fish_color_user white
     set -g fish_color_host gray
-    set -g fish_color_autosuggestion 555   # Ghost text
+    set -g fish_color_autosuggestion 9C9990   # Ghost text
     set -g fish_color_search_match --background=blue
 
     # Aliases
@@ -27,7 +27,9 @@ if status is-interactive
     alias bl='bluetui'
     alias p='python3'
     alias cs50 'gcc -lcs50'
-   
+    alias run="gcc -fsanitize=address -fsanitize=leak -g"
+    alias studywith="mpv --no-border --really-quiet --ytdl-format=worst --vo=gpu --framedrop=vo"
+
     # Environment variables
     set -x HYPRSHOT_DIR "$HOME/Pictures/Screenshots"
 
@@ -39,9 +41,6 @@ if status is-interactive
         echo \n"➜ "
     end
 end
-
-# === GTK dark theme override ===
-set -Ux GTK_THEME Adwaita:dark
 
 function pom
     timer $argv
@@ -56,3 +55,5 @@ end
 set -Ux EDITOR nvim
 set -Ux VISUAL nvim
 export MOZ_ENABLE_WAYLAND=1
+set -Ux XCURSOR_THEME macOS
+set -Ux XCURSOR_SIZE 35

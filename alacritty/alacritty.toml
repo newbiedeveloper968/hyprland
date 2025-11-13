@@ -1,13 +1,107 @@
+
+[bell]
+animation = "EaseOutCirc"
+color = "0x464d6a"
+duration = 0
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "0x434758"
+blue = "0x9cc4ff"
+cyan = "0xa3f7ff"
+green = "0xddffa7"
+magenta = "0xe1acff"
+red = "0xff8b92"
+white = "0xffffff"
+yellow = "0xffe585"
+
+[colors.normal]
+black = "0x292d3e"
+blue = "0x82aaff"
+cyan = "0x89ddff"
+green = "0xc3e88d"
+magenta = "0xc792ea"
+red = "0xf07178"
+white = "0xd0d0d0"
+yellow = "0xffcb6b"
+
 [colors.primary]
-background = "#1e1e1e"
-foreground = "#c5c8c6"
+background = "0x292d3e"
+foreground = "0xd0d0d0"
+
+[cursor]
+blink_interval = 500
+thickness = 0.15
+unfocused_hollow = true
+
+[cursor.style]
+blinking = "On"
+shape = "Block"
 
 [font]
-size = 14
+normal = { style = "Bold" }
+# If the font supports bold/italic and you want to set them:
+bold   = { style = "Bold" }
+italic = { style = "Italic" }
+
+size = 14.0  # adjust this to your liking, maybe higher or lower
+
+offset = { x = 0, y = 0 }   # vertical/horizontal tweak if needed
+
+[mouse]
+hide_when_typing = true
+
+[[mouse.bindings]]
+action = "PasteSelection"
+mouse = "Middle"
+
+[[mouse.bindings]]
+action = "Copy"
+mouse = "Right"
+
+#[mouse.double_click]
+#threshold = 300
+
+#[mouse.triple_click]
+#threshold = 300
+
+[scrolling]
+history = 500
+multiplier = 1
+
+[window]
+decorations = "full"
+decorations_theme_variant = "Dark"
+dynamic_padding = true
+dynamic_title = true
+opacity = 0.8
+startup_mode = "Windowed"
+title = "Alacritty"
+
+[window.class]
+general = "Alacritty"
+instance = "Alacritty"
 
 [window.padding]
-x = 40
-y = 40
+x = 5
+y = 5
 
 [general]
+# [colors.primary]
+# background = "#1e1e1e"
+# foreground = "#c5c8c6"
+# 
+# [font]
+# size = 14
+# 
+# [window.padding]
+# x = 40
+# y = 40
+# 
+# [general]
+# live_config_reload = true
+
 live_config_reload = true
+working_directory = "None"
