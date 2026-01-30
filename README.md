@@ -72,3 +72,12 @@ sudo systemctl enable NetworkManager.service && sudo systemctl start NetworkMana
 ```
 xhost +SI:localuser:root && pkexec grub-customizer
 ```
+
+### EOF/TLS error
+```
+ip link
+
+```
+```
+sudo ip link set dev wlan0 mtu 1400
+```
