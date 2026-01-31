@@ -41,18 +41,16 @@
             "key": " ",
             "keyColor": "blue"
         },
-        /*
         {
             "type": "packages",
             "key": "󰏖 ",
             "keyColor": "yellow"
         },
-        */
         {
             "type": "memory",
             "key": "󰍛 ",
             "keyColor": "magenta",
-            // format: used / total
+            "format": used / total
             "format": "{1} / {2}"
         },
         {

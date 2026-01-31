@@ -1,0 +1,88 @@
+/* @import "../../.local/share/dotfiles/current/theme/waybar.css"; */
+
+* {
+    margin-top: 0px;
+    background-color: transparent;
+    color: @foreground;
+
+    font-family: CaskaydiaMono Nerd Font;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+window#waybar {
+    background-color: alpha(@background, 0.9);
+}
+
+.modules-left {
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top:5px;
+    padding-bottom:5px;
+    background-color: #2d2d33;
+    border-radius: 10px;
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+.modules-right {
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top:5px;
+    padding-bottom:5px;
+    background-color: #2d2d33;
+    border-radius: 10px;
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.modules-center {
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top:5px;
+    padding-bottom:5px;
+    background-color: #2d2d33;
+    border-radius: 10px;
+    margin-top: 0px;
+    font-weight: bold;
+
+#workspaces button {
+    all: initial;
+    padding: 0 6px;
+    margin: 0 1.5px;
+    min-width: 9px;
+}
+
+#workspaces button.empty {
+    font-weight: bold;
+    opacity: 1;
+}
+
+#cpu,
+#bluetooth,
+#pulseaudio,
+#network,
+#clock,
+#battery,
+#custom-exit,
+#custom-openwebui,
+#custom-brightness,
+#custom-hypridle,
+#custom-filemanager {
+    min-width: 12px;
+    margin: 0 8px;
+    font-size: 12px;
+}
+
+#custom-hypridle.notactive {
+    color: rgb(224, 137, 137);
+}
+tooltip {
+    background-color: alpha(@background, 0.9);
+    padding: 20px;
+    margin: 0px;
+}
+
+tooltip label {
+    color: @foreground;
+}

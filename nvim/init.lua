@@ -42,6 +42,8 @@ Plug 'saadparwaiz1/cmp_luasnip'        " Snippet completions
 Plug 'windwp/nvim-autopairs'           " Auto close pairs
 Plug 'sainnhe/sonokai'
 
+Plug 'jose-elias-alvarez/null-ls.nvim'
+
 " Plug 'lervag/vimtex'
 " Plug 'lervag/vimtex', { 'tag': 'v2.15' }
 
@@ -122,8 +124,8 @@ cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 
 vim.keymap.set("n", "<leader>cp", [[:let @+ = expand('%:p:h')<CR>]], { noremap = true, silent = true })
 
-vim.cmd("colorscheme sonokai")
--- vim.cmd("colorscheme gruvbox")
+-- vim.cmd("colorscheme sonokai")
+vim.cmd("colorscheme gruvbox")
 
 vim.keymap.set("i", "kj", "<ESC>", { noremap = true, silent = true })
 
@@ -162,8 +164,3 @@ for _, lsp in ipairs(servers) do
     capabilities = require("cmp_nvim_lsp").default_capabilities(),
   }
 end
-
-require('image').setup({
-  max_width = 80,
-  max_height = 40,
-})

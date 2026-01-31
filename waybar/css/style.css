@@ -51,11 +51,11 @@ tooltip label {
 
 /* global paddings */
 #backlight, #pulseaudio, #network, #temperature,
-#bluetooth, #battery, #memory, #cpu, #load{
+#bluetooth, #memory, #cpu, #load{
     padding: 2px 7px;
 }
 
-#workspaces, #bluetooth, #battery, #memory, #temperature,
+#workspaces, #bluetooth, #memory, #temperature,
 #network, #pulseaudio, #backlight, #cpu, #load {
     background: transparent;
     border-radius: 15px;
@@ -133,6 +133,7 @@ tooltip label {
 
 #power-profiles-daemon {
     margin-left: 5px;
+    margin-right: 5px;
     padding: 0 12px;
 }
 

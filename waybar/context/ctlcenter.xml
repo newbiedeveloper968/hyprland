@@ -7,6 +7,7 @@
         <property name="label">Resolution</property>
         <child type="submenu">
             <object class="GtkMenu">
+
                 <child>
                     <object class="GtkMenuItem" id="action-1-1">
                         <property name="label">Default</property>
@@ -24,6 +25,13 @@
                         <property name="label">16:10</property>
                     </object>
                 </child>
+
+                <child>
+                    <object class="GtkMenuItem" id="action-1-4">
+                        <property name="label">CUSTOM</property>
+                    </object>
+                </child>
+
             </object>
         </child>
       </object>

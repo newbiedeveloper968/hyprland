@@ -4,7 +4,7 @@ if status is-interactive
     end
 
     # Custom greeting
-    echo "🌱 Gambare Gambare!"
+    echo "🌱 \"THROUGH DIFFICULTIES TO HONORS\""
 
     # Customize syntax highlighting colors
     set -g fish_color_command brcyan       # Commands
@@ -28,7 +28,9 @@ if status is-interactive
     alias p='python3'
     alias cs50 'gcc -lcs50'
     alias run="gcc -fsanitize=address -fsanitize=leak -g"
-    alias studywith="mpv --no-border --really-quiet --ytdl-format=worst --vo=gpu --framedrop=vo"
+    alias studywith='mpv --no-border --really-quiet --ytdl-format="bestvideo[height<=720]+bestaudio/best[height<=720]" --vo=gpu-next --hwdec=auto-safe --framedrop=vo'
+    alias b0="rfkill block bluetooth"
+    alias b1="rfkill unblock bluetooth"
 
     # Environment variables
     set -x HYPRSHOT_DIR "$HOME/Pictures/Screenshots"
@@ -40,11 +42,6 @@ if status is-interactive
         set_color ffffff
         echo \n"➜ "
     end
-end
-
-function pom
-    timer $argv
-    notify-send "Timer Done"
 end
 
 function cs50
