@@ -48,6 +48,20 @@ function cs50
     gcc $argv -lcs50
 end
 
+function set_wallpaper
+    if acpi -a 2>/dev/null | grep -q "on-line"
+        pkill -f mpvpaper
+        mpvpaper -o "loop --hwdec=auto --no-audio --framedrop=vo --vf=fps=15" "*" "$VIDEO" &
+    else
+        pkill -f mpvpaper
+        if test -f "$STATIC"
+            echo "Applying static wallpaper: $STATIC"
+            hyprpaper wallpaper "$STATIC"
+        else
+            echo "Static wallpaper missing for $VIDEO"
+        end
+    end
+end
 
 set -Ux EDITOR nvim
 set -Ux VISUAL nvim
