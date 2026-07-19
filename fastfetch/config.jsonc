@@ -1,70 +1,84 @@
+// Inspired by Catnap
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
- "logo": {
-  "height": 5,
-  "width": 10,
-  "padding": {
-    "top": 1
-    }
-  },
+    "logo": {
+    	"source": "~/.config/fastfetch/pngs/pochita.png",
+    	"type": "kitty",
+    	"height": 10,
+    	"padding": {
+    		"top": 1
+    	}
+    },
     "display": {
-        "separator": " -> "
+        "separator": " "
     },
     "modules": [
-        "break",
         {
+            "key": "╭───────────╮",
+            "type": "custom"
+        },
+        {
+            "key": "│ {#31} user    {#keys}│",
             "type": "title",
-            "keyWidth": 10,
-			"format": "         {6}{7}{8}"
+            "format": "{user-name}"
         },
         {
-            "type": "custom",
-            "format": " ─────────────────────────── "
+            "key": "│ {#32}󰇅 hname   {#keys}│",
+            "type": "title",
+            "format": "{host-name}"
         },
         {
-            "type": "kernel",
-            "key": " ",
-            "keyColor": "yellow"
+            "key": "│ {#33}󰅐 uptime  {#keys}│",
+            "type": "uptime"
+        },
+     
+        {
+            "key": "│ {#35} kernel  {#keys}│",
+            "type": "kernel"
         },
         {
-            "type": "wm",
-            "key": " ",
-            "keyColor": "blue"
+            "key": "│ {#36}󰇄 desktop {#keys}│",
+            "type": "de"
         },
         {
-            "type": "shell",
-            "key": " ",
-            "keyColor": "yellow"
+            "key": "│ {#31} term    {#keys}│",
+            "type": "terminal"
         },
         {
-            "type": "terminal",
-            "key": " ",
-            "keyColor": "blue"
+            "key": "│ {#32} shell   {#keys}│",
+            "type": "shell"
         },
         {
-            "type": "packages",
-            "key": "󰏖 ",
-            "keyColor": "yellow"
+            "key": "│ {#33}󰍛 cpu     {#keys}│",
+            "type": "cpu",
+            "showPeCoreCount": true
         },
         {
-            "type": "memory",
-            "key": "󰍛 ",
-            "keyColor": "magenta",
-            "format": "{1} / {2}"
+            "key": "│ {#34}󰉉 disk    {#keys}│",
+            "type": "disk",
+            "folders": "/"
         },
         {
-            "type": "uptime",
-            "key": "󰔛 ",
-            "keyColor": "green"
+            "key": "│ {#35} memory  {#keys}│",
+            "type": "memory"
         },
         {
-            "type": "custom",
-            "format": " ─────────────────────────── "
+            "key": "│ {#36}󰩟 network {#keys}│",
+            "type": "localip",
+            "format": "{ipv4} ({ifname})"
         },
         {
-            "type": "custom",
-            "format": "   \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m  \u001b[90m "
+            "key": "├───────────┤",
+            "type": "custom"
         },
-		"break",
+        {
+            "key": "│ {#39} colors  {#keys}│",
+            "type": "colors",
+            "symbol": "circle"
+        },
+        {
+            "key": "╰───────────╯",
+            "type": "custom"
+        }
     ]
 }

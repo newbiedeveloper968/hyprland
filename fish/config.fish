@@ -26,12 +26,10 @@ if status is-interactive
     alias vim='nvim'
     alias bl='bluetui'
     alias p='python3'
-    alias cs50 'gcc -lcs50'
+    # alias cs50 'gcc -lcs50'
     alias run="gcc -fsanitize=address -fsanitize=leak -g"
-    alias studywith='mpv --no-border --really-quiet --ytdl-format="bestvideo[height<=720]+bestaudio/best[height<=720]" --vo=gpu-next --hwdec=auto-safe --framedrop=vo'
     alias b0="rfkill block bluetooth"
-    alias b1="rfkill unblock bluetooth"
-
+    alias b1="rfkill unblock bluetooth && bluetui"
     # Environment variables
     set -x HYPRSHOT_DIR "$HOME/Pictures/Screenshots"
 
@@ -48,19 +46,24 @@ function cs50
     gcc $argv -lcs50
 end
 
-function set_wallpaper
-    if acpi -a 2>/dev/null | grep -q "on-line"
-        pkill -f mpvpaper
-        mpvpaper -o "loop --hwdec=auto --no-audio --framedrop=vo --vf=fps=15" "*" "$VIDEO" &
-    else
-        pkill -f mpvpaper
-        if test -f "$STATIC"
-            echo "Applying static wallpaper: $STATIC"
-            hyprpaper wallpaper "$STATIC"
-        else
-            echo "Static wallpaper missing for $VIDEO"
-        end
-    end
+# function set_wallpaper
+#     if acpi -a 2>/dev/null | grep -q "on-line"
+#         pkill -f mpvpaper
+#         mpvpaper -o "loop --hwdec=auto --no-audio --framedrop=vo --vf=fps=15" "*" "$VIDEO" &
+#     else
+#         pkill -f mpvpaper
+#         if test -f "$STATIC"
+#             echo "Applying static wallpaper: $STATIC"
+#             hyprpaper wallpaper "$STATIC"
+#         else
+#             echo "Static wallpaper missing for $VIDEO"
+#         end
+#     end
+# end
+
+function cs
+    set src $argv[1]
+    clang $src -lcs50 -o (basename $src .c)
 end
 
 set -Ux EDITOR nvim
